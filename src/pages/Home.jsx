@@ -41,7 +41,7 @@ export default function Home() {
       setStudents(students.filter(student => student.id !== id));
     } catch (error) {
       console.error("Lỗi khi xóa sinh viên:", error);
-      alert("Không thể xóa sinh viên");
+    
     }
   };
 

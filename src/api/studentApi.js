@@ -1,4 +1,4 @@
-// api/studentApi.js
+
 const BASE_URL = 'https://studentmaganement-production.up.railway.app/api/students';
 
 // Helper function để xử lý response
