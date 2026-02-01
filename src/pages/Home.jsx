@@ -19,14 +19,11 @@ export default function Home() {
       setLoading(true);
       setError(null);
       console.log(' Đang tải danh sách sinh viên...');
-      
-      // Test connection trước
+    
       const testResult = await studentApi.testConnection();
       console.log('Test connection:', testResult);
       
-      if (!testResult.success) {
-        throw new Error(`Không thể kết nối đến server: ${testResult.status}`);
-      }
+      
       
       const data = await studentApi.getAllStudents();
       console.log(' Dữ liệu nhận được:', data);
@@ -106,7 +103,7 @@ export default function Home() {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-md max-w-md text-center">
-          <div className="text-red-500 text-5xl mb-4">⚠️</div>
+          <div className="text-red-500 text-5xl mb-4"></div>
           <h2 className="text-xl font-bold text-gray-800 mb-2">Lỗi kết nối</h2>
           <p className="text-gray-600 mb-4">{error}</p>
           <button
