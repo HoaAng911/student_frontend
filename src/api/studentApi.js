@@ -1,7 +1,7 @@
 // src/api/studentApi.js - TỐI GIẢN
-const BASE_URL = 'https://studentmanagement-production.up.railway.app/api/students';
+const BASE_URL = 'https://studentmaganement-production.up.railway.app/api/students';
 
-// GET: Lấy tất cả sinh viên
+// GET
 export const getAllStudents = async () => {
   const response = await fetch(BASE_URL, {
     headers: { 'Accept': 'application/json' },
@@ -15,7 +15,7 @@ export const getAllStudents = async () => {
   return response.json();
 };
 
-// POST: Thêm sinh viên mới
+// POST
 export const createStudent = async (student) => {
   const response = await fetch(BASE_URL, {
     method: 'POST',
@@ -31,23 +31,23 @@ export const createStudent = async (student) => {
   return response.json();
 };
 
-// DELETE: Xóa sinh viên - QUAN TRỌNG: Không đợi JSON
+// DELETE
 export const deleteStudent = async (id) => {
   const response = await fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE',
     mode: 'cors'
   });
   
-  // DELETE thường trả về 200 OK hoặc 204 No Content (không có body)
+ 
   if (!response.ok && response.status !== 204) {
     throw new Error(`Lỗi ${response.status}: Không thể xóa sinh viên`);
   }
   
-  // Trả về object đơn giản, không parse JSON
+
   return { success: true, id };
 };
 
-// PUT: Cập nhật sinh viên (nếu cần)
+// PUT
 export const updateStudent = async (id, student) => {
   const response = await fetch(`${BASE_URL}/${id}`, {
     method: 'PUT',
