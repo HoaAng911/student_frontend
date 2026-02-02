@@ -1,17 +1,16 @@
-// src/api/studentApi.js - TỐI GIẢN
 const BASE_URL = 'https://studentmaganement-production.up.railway.app/api/students';
+// const BASE_URL = 'http://localhost:8080/api/students'
 
-// GET
 export const getAllStudents = async () => {
   const response = await fetch(BASE_URL, {
     headers: { 'Accept': 'application/json' },
     mode: 'cors'
   });
-  
+
   if (!response.ok) {
     throw new Error(`Lỗi ${response.status}: Không thể tải danh sách`);
   }
-  
+
   return response.json();
 };
 
@@ -23,11 +22,11 @@ export const createStudent = async (student) => {
     body: JSON.stringify(student),
     mode: 'cors'
   });
-  
+
   if (!response.ok) {
     throw new Error(`Lỗi ${response.status}: Không thể thêm sinh viên`);
   }
-  
+
   return response.json();
 };
 
@@ -37,12 +36,12 @@ export const deleteStudent = async (id) => {
     method: 'DELETE',
     mode: 'cors'
   });
-  
- 
+
+
   if (!response.ok && response.status !== 204) {
     throw new Error(`Lỗi ${response.status}: Không thể xóa sinh viên`);
   }
-  
+
 
   return { success: true, id };
 };
@@ -55,10 +54,24 @@ export const updateStudent = async (id, student) => {
     body: JSON.stringify(student),
     mode: 'cors'
   });
-  
+
   if (!response.ok) {
     throw new Error(`Lỗi ${response.status}: Không thể cập nhật`);
   }
-  
+
+  return response.json();
+
+};
+// Tìm kiếm sinh viên theo tên
+export const searchStudents = async (name) => {
+  const response = await fetch(`${BASE_URL}/search?name=${encodeURIComponent(name)}`, {
+    headers: { 'Accept': 'application/json' },
+    mode: 'cors'
+  });
+
+  if (!response.ok) {
+    throw new Error(`Lỗi ${response.status}: Không thể tìm kiếm`);
+  }
+
   return response.json();
 };
