@@ -1,4 +1,4 @@
-const BASE_URL = 'https://studentmaganement-production.up.railway.app/api/students/
+const BASE_URL = 'https://studentmaganement-production.up.railway.app/
 // const BASE_URL = 'http://localhost:8080/api/students'
 
 export const getAllStudents = async () => {
