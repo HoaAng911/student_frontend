@@ -13,6 +13,18 @@ export const getAllStudents = async () => {
 
   return response.json();
 };
+export const getStudentDetail = async (id) => {
+  const response = await fetch(`${BASE_URL}/${id}`, {
+    method: 'GET',
+    mode: 'cors'
+  })
+  if (!response.ok) {
+    throw new Error(`Lỗi ${response.status}: Không thể thêm sinh viên`);
+  }
+
+  return response.json();
+
+}
 
 // POST
 export const createStudent = async (student) => {
